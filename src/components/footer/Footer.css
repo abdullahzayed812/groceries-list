@@ -1,0 +1,9 @@
+footer {
+  width: "100%";
+  padding: 20px;
+  background-color: blue;
+}
+
+footer h2 {
+  text-align: center;
+}
