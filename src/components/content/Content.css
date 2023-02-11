@@ -6,7 +6,7 @@ main {
   overflow-y: auto;
 }
 ul {
-  width: 500px;
+  width: 700px;
 }
 ul li {
   padding: 10px;
@@ -24,6 +24,12 @@ label {
   flex-grow: 1;
   margin: 0px 20px;
   font-size: 18px;
+}
+input[type="checkbox"]:focus + label {
+  text-decoration: underline;
+}
+input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
 }
 svg {
   width: 40px;

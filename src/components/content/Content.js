@@ -12,7 +12,7 @@ export function Content() {
     {
       id: 2,
       checked: false,
-      text: "Some text to show in item",
+      text: "Can i take some froutes",
     },
     {
       id: 3,
@@ -26,23 +26,34 @@ export function Content() {
       item.id === id ? { ...item, checked: !item.checked } : item
     );
     setItems(itemsList);
+    localStorage.setItem("shoppingList", JSON.stringify(itemsList));
+  };
+
+  const handleDelete = (id) => {
+    const itemsList = items.filter((item) => item.id !== id);
+    setItems(itemsList);
+    localStorage.setItem("shoppingList", JSON.stringify(itemsList));
   };
 
   return (
     <main>
-      <ul>
-        {items.map((item) => (
-          <li>
-            <input
-              type="checkbox"
-              checked={item.checked}
-              onClick={() => handleCheck(item.id)}
-            />
-            <label>{item.text}</label>
-            <FaTrash role="button" />
-          </li>
-        ))}
-      </ul>
+      {items.length > 0 ? (
+        <ul>
+          {items.map((item) => (
+            <li>
+              <input
+                type="checkbox"
+                checked={item.checked}
+                onChange={() => handleCheck(item.id)}
+              />
+              <label>{item.text}</label>
+              <FaTrash role="button" onClick={() => handleDelete(item.id)} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Your list is empty.</p>
+      )}
     </main>
   );
 }
