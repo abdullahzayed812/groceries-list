@@ -1,9 +1,11 @@
 import "./Footer.css";
 
-export function Footer() {
+export function Footer({ length }) {
   return (
     <footer>
-      <h2>Copyright&copy; 2023</h2>
+      <h2>
+        {length} List {length > 1 ? "Items" : "Item"}
+      </h2>
     </footer>
   );
 }
