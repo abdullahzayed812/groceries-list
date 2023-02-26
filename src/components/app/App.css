@@ -15,7 +15,7 @@ a {
 .App {
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 800px;
   height: calc(100vh - 40px);
   margin: 20px auto;
   background-color: white;
