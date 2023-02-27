@@ -1,0 +1,16 @@
+.search-form {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.form-label {
+  position: absolute;
+  left: -9999;
+}
+.input-search {
+  flex-grow: 1;
+  font-size: 22px;
+  height: 48px;
+  outline: none;
+  padding: 5px;
+}

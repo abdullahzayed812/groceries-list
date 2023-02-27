@@ -3,6 +3,7 @@ import { AddItem } from "../addItem/AddItem";
 import { Content } from "../content/Content";
 import { Footer } from "../footer/Footer";
 import { Header } from "../header/Header";
+import { SearchItem } from "../searchItem/Searchitem";
 import "./App.css";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     JSON.parse(localStorage.getItem("shoppingList"))
   );
   const [newItem, setNewItem] = useState("");
+  const [search, setSearch] = useState("");
 
   const setAndSaveItems = (items) => {
     setItems(items);
@@ -50,8 +52,11 @@ function App() {
         newItem={newItem}
         setNewItem={setNewItem}
       />
+      <SearchItem search={search} setSearch={setSearch} />
       <Content
-        items={items}
+        items={items.filter((item) =>
+          item.text.toLowerCase().includes(search.toLowerCase())
+        )}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
       />
