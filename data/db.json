@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "checked": false,
+      "text": "Some kg of rise"
+    },
+    {
+      "id": 2,
+      "checked": false,
+      "text": "Pizza"
+    },
+    {
+      "id": 3,
+      "checked": false,
+      "text": "Milk, cheese"
+    }
+  ]
+}

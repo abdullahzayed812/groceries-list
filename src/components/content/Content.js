@@ -3,7 +3,7 @@ import "./Content.css";
 
 export function Content({ items, handleCheck, handleDelete }) {
   return (
-    <main>
+    <>
       {items.length > 0 ? (
         <ItemList
           items={items}
@@ -13,6 +13,6 @@ export function Content({ items, handleCheck, handleDelete }) {
       ) : (
         <p>Your list is empty.</p>
       )}
-    </main>
+    </>
   );
 }
