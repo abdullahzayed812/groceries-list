@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { apiRequest } from "../../api/apiRequest";
 import { AddItem } from "../addItem/AddItem";
 import { Content } from "../content/Content";
 import { Footer } from "../footer/Footer";
@@ -33,23 +34,50 @@ function App() {
     setTimeout(() => fetchItems(), 2000);
   }, []);
 
-  const handleCheck = (id) => {
+  const handleCheck = async (id) => {
     const itemsList = items.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
     );
     setItems(itemsList);
+
+    const myItem = itemsList.filter((item) => item.id === id);
+    const updateOptions = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ checked: myItem[0].checked }),
+    };
+    const updateUrl = `${API_URL}/${id}`;
+    const result = await apiRequest(updateUrl, updateOptions);
+    if (result) setFetchError(result);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const itemsList = items.filter((item) => item.id !== id);
     setItems(itemsList);
+
+    const deleteUrl = `${API_URL}/${id}`;
+    const deleteOptions = { method: "DELETE" };
+    const result = await apiRequest(deleteUrl, deleteOptions);
+    if (result) setFetchError(result);
   };
 
-  const addItem = (item) => {
+  const addItem = async (item) => {
     const id = items.length > 0 ? items[items.length - 1]?.id + 1 : 1;
     const myNewItem = { id, checked: false, text: item };
     const listItems = [...items, myNewItem];
     setItems(listItems);
+
+    const postOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(myNewItem),
+    };
+    const result = await apiRequest(API_URL, postOptions);
+    if (result) setFetchError(result);
   };
 
   const handleSubmit = (e) => {

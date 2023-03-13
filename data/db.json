@@ -6,14 +6,9 @@
       "text": "Some kg of rise"
     },
     {
-      "id": 2,
+      "id": 4,
       "checked": false,
-      "text": "Pizza"
-    },
-    {
-      "id": 3,
-      "checked": false,
-      "text": "Milk, cheese"
+      "text": "cookies"
     }
   ]
 }
